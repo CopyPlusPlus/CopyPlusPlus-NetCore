@@ -34,16 +34,33 @@ namespace CopyPlusPlus
         private void ClipboardChanged(Object sender, SharpClipboard.ClipboardChangedEventArgs e)
         {
             string text = e.Content.ToString();
-            string text_after = text.Replace("\n","").Replace("\r","");
-            Clipboard.SetText(text_after);
+            //string text_after = "";
 
-            Debug.WriteLine(text);
-            Debug.WriteLine(text_after);
+            for (int counter = 0; counter < text.Length-1; counter++)
+            {
+                Console.WriteLine(text[counter]);
+                if(text[counter+1].ToString() == "\r" && text[counter].ToString() != "。")
+                {
+                    text = text.Remove(counter+1, 2);
+                }
+            }
+            
+            //string text_after = text.Replace("\n","").Replace("\r","");
+
+            Clipboard.SetText(text);
+
+            //Debug.WriteLine(text);
+            //Debug.WriteLine(text_after);
         }
 
         private void Todolist_Checked(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("你是想帮我完成这个功能吗?");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("explorer.exe","https://github.com/CopyPlusPlus/CopyPlusPlus");
         }
     }
 }
