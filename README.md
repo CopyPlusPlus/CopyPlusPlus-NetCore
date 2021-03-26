@@ -9,3 +9,5 @@ to do list
 1.翻译
 2.OCR文字识别
 3.去重
+
+![Stargazers over time](https://starchart.cc/CopyPlusPlus/CopyPlusPlus.svg)
