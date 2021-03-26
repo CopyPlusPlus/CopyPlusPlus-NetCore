@@ -8,20 +8,19 @@
         Title="Copy++" Height="550" Width="400" ResizeMode="CanMinimize">
     <Grid Height="530" Width="400" VerticalAlignment="Bottom">
         <TextBlock x:Name="text_abstract" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="86" Width="380" Padding="0,10,0,0" FontSize="14"><Run Text="该软件会自动处理复制的文字段落，并将处理后的文字更新到粘贴板，直接粘贴即可。祝写作顺利！"/><LineBreak/><Run/><LineBreak/><Run Text="注:"/><Run Text=" 多段复制时"/><Run Language="zh-cn" Text="，"/><Run Text="小概率出现误识别"/><Run Text="，"/><Run Text="推荐每次"/><Run Text="复制一段。"/></TextBlock>
-        <Line X1="0" Y1="10" X2="400" Y2="10" Stroke="#FF3A4FEE" StrokeThickness="2" Margin="0,90,0,424" />
-        <StackPanel Margin="0,106,0,327" HorizontalAlignment="Center" Width="380">
+
+        <StackPanel Margin="0,97,0,336" HorizontalAlignment="Center" Width="380">
             <Label FontWeight="Bold">To do list</Label>
             <CheckBox x:Name="checkBox1" Content="翻译" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Checked="Todolist_Checked"/>
             <CheckBox x:Name="checkBox2" Content="论文去重" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Checked="Todolist_Checked"/>
             <CheckBox x:Name="checkBox3" Content="OCR文字识别" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Checked="Todolist_Checked"/>
         </StackPanel>
 
-        <Line X1="0" Y1="10" X2="400" Y2="10" Stroke="#FF3A4FEE" StrokeThickness="2" Margin="0,192,0,322" />
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,208,0,0" Text="如果您在使用过程中遇到问题，或者有好的想法或建议，欢迎联系我" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144"><Run Text="copyplusplus@163.com"/></TextBlock>
 
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,270,0,0" Text="项目已开源,欢迎Star" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button Margin="135,268,246,242" Click="Button_Click" Cursor="Hand">
+        <Button Margin="128,267,253,243" Click="Button_Click" Cursor="Hand">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/image/GitHub.png"/>
@@ -29,14 +28,14 @@
             </Button.Template>
         </Button>
 
-        <Image Source="/image/wechat-gzh.jpg" Margin="241,234,84,229" />
-        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="212,301,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10"><Run Language="zh-cn" Text="欢迎"/><Run Text="关注我的公众号,获取更新"/></TextBlock>
+        <Image Source="/image/wechatgzh.jpg" Margin="236,225,91,232" />
+        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="218,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10" TextAlignment="Center" Width="109"><Run Text="欢迎"/><Run Text="关注我的公众号"/><LineBreak/><Run Language="zh-cn" Text="后续"/><Run Text="更新"/><Run Language="zh-cn" Text="将会在此发布"/></TextBlock>
 
+        <Line X1="0" Y1="10" X2="400" Y2="10" Stroke="#FF3A4FEE" StrokeThickness="2" Margin="0,314,0,200" />
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Center" Margin="0,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Text="如果您觉得好用，欢迎捐助"/>
         <Image Source="/image/Wechat.png" Margin="30,325,220,10" Width="150" Height="150" VerticalAlignment="Bottom" />
         <Image Source="/image/AliPay.png" Margin="218,0,28,10" Width="154" Height="154" VerticalAlignment="Bottom" />
         <Label x:Name="label1" Content="微 信 支 付" HorizontalAlignment="Left" Margin="71,350,0,155" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
         <Label x:Name="label2" Content="支 付 宝" HorizontalAlignment="Left" Margin="268,0,0,155" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
-
     </Grid>
 </Window>

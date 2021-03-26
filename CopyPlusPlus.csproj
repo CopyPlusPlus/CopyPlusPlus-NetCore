@@ -10,7 +10,9 @@
   <ItemGroup>
     <None Remove="image\AliPay.png" />
     <None Remove="image\GitHub.png" />
+    <None Remove="image\wechat-gzh.jpg" />
     <None Remove="image\Wechat.png" />
+    <None Remove="image\wechatgzh.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +27,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="image\Wechat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="image\wechatgzh.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
