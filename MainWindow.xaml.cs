@@ -33,24 +33,59 @@ namespace CopyPlusPlus
 
         private void ClipboardChanged(Object sender, SharpClipboard.ClipboardChangedEventArgs e)
         {
-            string text = e.Content.ToString();
-            //string text_after = "";
 
-            for (int counter = 0; counter < text.Length-1; counter++)
+            // Is the content copied of text type?
+            if (e.ContentType == SharpClipboard.ContentTypes.Text)
             {
-                Console.WriteLine(text[counter]);
-                if(text[counter+1].ToString() == "\r" && text[counter].ToString() != "。")
+                // Get the cut/copied text.
+                string text = e.Content.ToString();
+
+                for (int counter = 0; counter < text.Length - 1; counter++)
                 {
-                    text = text.Remove(counter+1, 2);
+                    Console.WriteLine(text[counter]);
+                    if (text[counter + 1].ToString() == "\r" && text[counter].ToString() != "。")
+                    {
+                        text = text.Remove(counter + 1, 2);
+                    }
                 }
+
+                //string text_after = text.Replace("\n","").Replace("\r","");
+
+                Clipboard.SetText(text);
             }
-            
-            //string text_after = text.Replace("\n","").Replace("\r","");
 
-            Clipboard.SetText(text);
+            // Is the content copied of image type?
+            else if (e.ContentType == SharpClipboard.ContentTypes.Image)
+            {
+                //do nothing
 
-            //Debug.WriteLine(text);
-            //Debug.WriteLine(text_after);
+                // Get the cut/copied image.
+                //Image img = (Image)e.Content;
+            }
+
+            // Is the content copied of file type?
+            else if (e.ContentType == SharpClipboard.ContentTypes.Files)
+            {
+                //do nothing
+
+                // Get the cut/copied file/files.
+                //Debug.WriteLine(clipboard.ClipboardFiles.ToArray());
+
+                // ...or use 'ClipboardFile' to get a single copied file.
+                //Debug.WriteLine(clipboard.ClipboardFile);
+
+            }
+
+            // If the cut/copied content is complex, use 'Other'.
+            else if (e.ContentType == SharpClipboard.ContentTypes.Other)
+            {
+                //do nothing
+
+                // Do something with 'clipboard.ClipboardObject' or 'e.Content' here...
+            }
+
+
+
         }
 
         private void Todolist_Checked(object sender, RoutedEventArgs e)
@@ -60,7 +95,7 @@ namespace CopyPlusPlus
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("explorer.exe","https://github.com/CopyPlusPlus/CopyPlusPlus");
+            Process.Start("explorer.exe", "https://github.com/CopyPlusPlus/CopyPlusPlus");
         }
     }
 }
