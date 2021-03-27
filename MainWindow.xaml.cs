@@ -42,11 +42,28 @@ namespace CopyPlusPlus
 
                 for (int counter = 0; counter < text.Length - 1; counter++)
                 {
-                    Console.WriteLine(text[counter]);
-                    if (text[counter + 1].ToString() == "\r" && text[counter].ToString() != "。")
+                    //Console.WriteLine(text[counter]);
+                    //if (text[counter + 1].ToString() == "\r" && text[counter].ToString() != "。")
+                    //{
+                    //    text = text.Remove(counter + 1, 2);
+                    //}
+                    //if (text[counter + 1].ToString() == "\r" && text[counter].ToString() != ".")
+                    //{
+                    //    text = text.Remove(counter + 1, 2);
+                    //}
+
+                    if (text[counter + 1].ToString() == "\r")
                     {
+                        if (text[counter].ToString() == ".")
+                        {
+                            continue;
+                        }
+                        if (text[counter].ToString() == "。")
+                        {
+                            continue;
+                        }
                         text = text.Remove(counter + 1, 2);
-                    }
+                    }               
                 }
 
                 //string text_after = text.Replace("\n","").Replace("\r","");
