@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CopyPlusPlus"
         mc:Ignorable="d"
-        Title="Copy++ v1.0 本软件免费" Height="550" Width="400" ResizeMode="CanMinimize">
+        Title="Copy++ v0.1 本软件免费" Height="550" Width="400" ResizeMode="CanMinimize">
     <Grid Height="530" Width="400" VerticalAlignment="Bottom" HorizontalAlignment="Center">
         <TextBlock x:Name="text_abstract" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="380" Padding="0,10,0,0" FontSize="14" LineHeight="24"><Run Text="该软件会自动处理复制的文字段落，并将处理后的文字更新到粘贴板，直接粘贴即可。祝写作顺利！"/></TextBlock>
 
