@@ -9,18 +9,18 @@
     <Grid Height="530" Width="400" VerticalAlignment="Bottom" HorizontalAlignment="Center">
         <TextBlock x:Name="text_abstract" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="380" Padding="0,10,0,0" FontSize="14" LineHeight="24"><Run Text="该软件会自动处理复制的文字段落，并将处理后的文字更新到粘贴板，直接粘贴即可。祝写作顺利！"/></TextBlock>
 
-        <StackPanel Margin="0,81,0,352" HorizontalAlignment="Center" Width="380">
+        <StackPanel Margin="0,79,0,354" HorizontalAlignment="Center" Width="380">
             <Label FontWeight="Bold">To do list</Label>
             <CheckBox x:Name="checkBox1" Content="翻译" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Checked="Todolist_Checked"/>
             <CheckBox x:Name="checkBox2" Content="论文去重" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Checked="Todolist_Checked"/>
             <CheckBox x:Name="checkBox3" Content="OCR文字识别" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Checked="Todolist_Checked"/>
         </StackPanel>
 
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Center" Margin="0,208,0,0" Text="如果您在使用过程中遇到问题，或者有好的想法或建议，欢迎联系我" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="45,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144"><Run Text="copyplusplus@163.com"/></TextBlock>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Center" Margin="0,198,0,0" Text="如果您在使用过程中遇到问题，或者有好的想法或建议，欢迎联系我" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="45,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144"><Run Text="copyplusplus@163.com"/></TextBlock>
 
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="45,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="项目已开源"/><Run Language="zh-cn" Text="，"/><Run Text="欢迎Star"/></TextBlock>
-        <Button Margin="167,277,214,233" Click="Button_Click" Cursor="Hand">
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="45,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="项目已开源"/><Run Language="zh-cn" Text="，"/><Run Text="欢迎Star"/></TextBlock>
+        <Button Margin="167,267,214,243" Click="Button_Click" Cursor="Hand">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/image/GitHub.png"/>
@@ -28,11 +28,11 @@
             </Button.Template>
         </Button>
 
-        <Image Source="/image/wechatgzh.jpg" Margin="246,225,81,232" />
-        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="228,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10" TextAlignment="Center" Width="109"><Run Text="欢迎"/><Run Text="关注我的公众号"/><LineBreak/><Run Language="zh-cn" Text="后续"/><Run Text="更新"/><Run Language="zh-cn" Text="将会在此发布"/></TextBlock>
+        <Image Source="/image/wechatgzh.jpg" Margin="246,215,81,242" />
+        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="228,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10" TextAlignment="Center" Width="109"><Run Text="欢迎"/><Run Text="关注我的公众号"/><LineBreak/><Run Language="zh-cn" Text="后续"/><Run Text="更新"/><Run Language="zh-cn" Text="将会在此发布"/></TextBlock>
 
         <Line X1="0" Y1="10" X2="400" Y2="10" Stroke="#FF3A4FEE" StrokeThickness="2" Margin="0,314,0,200" />
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Center" Margin="0,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Text="如果您觉得好用，欢迎捐助"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Center" Margin="0,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" Text="如果您觉得好用，欢迎捐助" TextAlignment="Center"/>
         <Image Source="/image/Wechat.png" Margin="30,325,220,10" Width="150" Height="150" VerticalAlignment="Bottom" />
         <Image Source="/image/AliPay.png" Margin="218,0,28,10" Width="154" Height="154" VerticalAlignment="Bottom" />
         <Label x:Name="label1" Content="微 信 支 付" HorizontalAlignment="Left" Margin="71,350,0,155" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
