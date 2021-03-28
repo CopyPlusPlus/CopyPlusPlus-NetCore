@@ -107,7 +107,7 @@ namespace CopyPlusPlus
 
         private void Todolist_Checked(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("你是想帮我完成这个功能吗?");
+            MessageBox.Show("欢迎赞助我，加快开发进度！");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
