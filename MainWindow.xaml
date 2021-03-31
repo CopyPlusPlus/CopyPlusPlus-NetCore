@@ -9,7 +9,7 @@
     <Grid Height="530" Width="400" VerticalAlignment="Bottom" HorizontalAlignment="Center">
         <TextBlock x:Name="text_abstract" HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="380" Padding="5,10,5,0" FontSize="14" LineHeight="24" FontStretch="Normal"><Run Text="本软件会自动合并段落，并且识别原有分段，只需将软件打开，然后直接复制粘贴即可。祝写作顺利！"/></TextBlock>
 
-        <StackPanel Margin="0,83,0,350" HorizontalAlignment="Center" Width="380">
+        <StackPanel Margin="0,83,0,350" HorizontalAlignment="Center" Width="153">
             <Label FontWeight="Bold">待做清单:</Label>
             <CheckBox x:Name="checkBox1" Content="翻译" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Checked="Todolist_Checked"/>
             <CheckBox x:Name="checkBox2" Content="论文去重" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Checked="Todolist_Checked"/>
@@ -20,7 +20,7 @@
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="45,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144"><Run Text="copyplusplus@163.com"/></TextBlock>
 
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="45,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="项目已开源"/><Run Language="zh-cn" Text="，"/><Run Text="欢迎Star"/></TextBlock>
-        <Button Margin="167,267,214,243" Click="Button_Click" Cursor="Hand">
+        <Button Margin="167,267,214,243" Click="Github_Click" Cursor="Hand">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/image/GitHub.png"/>
@@ -37,5 +37,6 @@
         <Image Source="/image/AliPay.png" Margin="218,0,28,10" Width="154" Height="154" VerticalAlignment="Bottom" />
         <Label x:Name="label1" Content="微 信 支 付" HorizontalAlignment="Left" Margin="71,350,0,155" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
         <Label x:Name="label2" Content="支 付 宝" HorizontalAlignment="Left" Margin="268,0,0,155" VerticalAlignment="Bottom" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="305,132,0,0" VerticalAlignment="Top" Click="BaiduTrans"/>
     </Grid>
 </Window>
