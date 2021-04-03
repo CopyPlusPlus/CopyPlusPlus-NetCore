@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CopyPlusPlus
 {
@@ -19,12 +11,31 @@ namespace CopyPlusPlus
     {
         // Holds a value determining if this is the first time the box has been clicked
         // So that the text value is not always wiped out.
-        bool hasBeenClicked1 = false;
-        bool hasBeenClicked2 = false;
+        private bool hasBeenClicked1 = false;
+
+        private bool hasBeenClicked2 = false;
 
         public KeyInput()
         {
             InitializeComponent();
+
+            if (Properties.Settings.Default.AppID == "none")
+            {
+                textBox1.Text = "点击这里输入";
+            }
+            else
+            {
+                textBox1.Text = Properties.Settings.Default.AppID;
+            }
+
+            if (Properties.Settings.Default.SecretKey == "none")
+            {
+                textBox2.Text = "关闭窗口自动保存";
+            }
+            else
+            {
+                textBox2.Text = Properties.Settings.Default.SecretKey;
+            }
         }
 
         private void ClearText(object sender, RoutedEventArgs e)
@@ -50,20 +61,20 @@ namespace CopyPlusPlus
 
         private void WriteKey(object sender, EventArgs e)
         {
-            if (textBox1.Text != "关闭窗口自动保存")
+            if (textBox1.Text != "点击这里输入" && textBox1.Text != "" && textBox1.Text != " ")
             {
                 Properties.Settings.Default.AppID = textBox1.Text;
             }
-            if (textBox2.Text != "关闭窗口自动保存")
+            if (textBox2.Text != "关闭窗口自动保存" && textBox2.Text != "" && textBox2.Text != " ")
             {
                 Properties.Settings.Default.SecretKey = textBox2.Text;
             }
             Properties.Settings.Default.Save();
 
-            if (textBox1.Text != "关闭窗口自动保存" || textBox2.Text != "关闭窗口自动保存" || textBox1.Text != "" || textBox2.Text != "" || textBox1.Text != " " || textBox2.Text != " ")
+            if (Properties.Settings.Default.AppID == "none" || Properties.Settings.Default.SecretKey == "none")
             {
-                MainWindow mainWin = new MainWindow();
-                mainWin.switch3.IsChecked = false;
+                //MainWindow mainWin = new MainWindow();
+                //mainWin.switch3.IsChecked = false;
             }
             MainWindow.changeStatus = false;
         }

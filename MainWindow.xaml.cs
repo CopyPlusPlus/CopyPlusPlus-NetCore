@@ -1,23 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Web;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WK.Libraries.SharpClipboardNS;
 
 namespace CopyPlusPlus
@@ -28,7 +18,9 @@ namespace CopyPlusPlus
     public partial class MainWindow : Window
     {
         //Is the translate API being changed or not
+#pragma warning disable CA2211 // Non-constant fields should not be visible
         public static bool changeStatus = false;
+#pragma warning restore CA2211 // Non-constant fields should not be visible
 
         public MainWindow()
         {
@@ -41,7 +33,6 @@ namespace CopyPlusPlus
 
         private void ClipboardChanged(Object sender, SharpClipboard.ClipboardChangedEventArgs e)
         {
-
             // Is the content copied of text type?
             if (e.ContentType == SharpClipboard.ContentTypes.Text)
             {
@@ -80,20 +71,33 @@ namespace CopyPlusPlus
                     string appId = Properties.Settings.Default.AppID;
                     string secretKey = Properties.Settings.Default.SecretKey;
 
-                    if (appId == "关闭窗口自动保存" || secretKey == "关闭窗口自动保存")
-                    {
-                        KeyInput keyinput = new KeyInput();
-                        keyinput.Show();
-                        changeStatus = true;
-                    }
-
                     if (changeStatus == false)
                     {
-                        text = BaiduTrans(appId, secretKey, text);
+                        if (appId == "none" || secretKey == "none")
+                        {
+                            MessageBox.Show("请先设置翻译接口");
+
+                            KeyInput keyinput = new KeyInput();
+                            keyinput.Show();
+                            changeStatus = true;
+                        }
+                        else
+                        {
+                            text = BaiduTrans(appId, secretKey, text);
+                        }
+
                     }
                 }
 
-                Clipboard.SetText(text);
+                try
+                {
+                    Clipboard.SetText(text);
+                }
+                finally
+                {
+
+                }
+
             }
 
             // Is the content copied of image type?
@@ -114,7 +118,6 @@ namespace CopyPlusPlus
 
                 // ...or use 'ClipboardFile' to get a single copied file.
                 //Debug.WriteLine(clipboard.ClipboardFile);
-
             }
             // If the cut/copied content is complex, use 'Other'.
             else if (e.ContentType == SharpClipboard.ContentTypes.Other)
@@ -174,11 +177,9 @@ namespace CopyPlusPlus
             //read json(retString) as a object
             var result = JsonSerializer.Deserialize<Rootobject>(retString);
 
-            Console.WriteLine(retString);
-            Console.WriteLine(result.trans_result[0].dst);
-
             return result.trans_result[0].dst;
         }
+
         // 计算MD5值
         public static string EncryptString(string str)
         {
@@ -198,23 +199,24 @@ namespace CopyPlusPlus
             return sb.ToString();
         }
 
-        private void ShowInputWindowFirstly(object sender, RoutedEventArgs e)
+        //打开翻译按钮
+        private void ShowInputWindowButton(object sender, RoutedEventArgs e)
         {
             string appId = Properties.Settings.Default.AppID;
             string secretKey = Properties.Settings.Default.SecretKey;
-            if (appId == "关闭窗口自动保存" || secretKey == "关闭窗口自动保存")
+            if (appId == "none" || secretKey == "none")
             {
+                MessageBox.Show("请先设置翻译接口");
                 KeyInput keyinput = new KeyInput();
                 keyinput.Show();
                 changeStatus = true;
             }
         }
 
-        private void ShowInputWindow(object sender, MouseButtonEventArgs e)
+        //点击"翻译"文字
+        private void ShowInputWindowText(object sender, MouseButtonEventArgs e)
         {
             KeyInput keyinput = new KeyInput();
-            keyinput.textBox1.Text = Properties.Settings.Default.AppID;
-            keyinput.textBox2.Text = Properties.Settings.Default.SecretKey;
             keyinput.Show();
             changeStatus = true;
         }

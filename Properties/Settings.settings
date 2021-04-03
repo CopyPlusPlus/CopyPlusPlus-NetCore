@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="AppID" Type="System.String" Scope="User">
-      <Value Profile="(Default)">关闭窗口自动保存</Value>
+      <Value Profile="(Default)">none</Value>
     </Setting>
     <Setting Name="SecretKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)">关闭窗口自动保存</Value>
+      <Value Profile="(Default)">none</Value>
     </Setting>
   </Settings>
 </SettingsFile>
