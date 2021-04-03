@@ -88,10 +88,11 @@ namespace CopyPlusPlus
 
                     }
                 }
+                Clipboard.SetText(text);
 
                 try
                 {
-                    Clipboard.SetText(text);
+                    
                 }
                 finally
                 {
