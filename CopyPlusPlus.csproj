@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="SharpClipboard" Version="3.5.2" />
+    <PackageReference Include="ToggleSwitch" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
