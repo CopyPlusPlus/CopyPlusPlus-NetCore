@@ -11,29 +11,31 @@
 
         <Grid Margin="0,78,0,254">
             <WrapPanel Margin="0,30,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <ToggleSwitch:HorizontalToggleSwitch
+                <ToggleSwitch:HorizontalToggleSwitch x:Name="switch1"
+                    IsChecked="True"
                     VerticalAlignment="Center"
                     Margin="0,0,0,0"
                     HorizontalAlignment="Center"
                     UncheckedBackground="#FF464141"
                     CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" />
-                <ToggleSwitch:HorizontalToggleSwitch
+                <ToggleSwitch:HorizontalToggleSwitch x:Name="switch2"
+                    IsChecked="False"
                     VerticalAlignment="Center"
                     Margin="50,0,0,0"
                     HorizontalAlignment="Center"
                     UncheckedBackground="#FF464141"
                     CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" />
-                <ToggleSwitch:HorizontalToggleSwitch
+                <ToggleSwitch:HorizontalToggleSwitch x:Name="switch3"
                     VerticalAlignment="Center"
                     Margin="50,0,0,0"
                     HorizontalAlignment="Center"
                     UncheckedBackground="#FF464141"
-                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" />
+                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" Checked="ShowInputWindowFirstly" />
             </WrapPanel>
             <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0" Width="340">
-                <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="9,0,0,0" Text="合并换行" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                <TextBlock x:Name="textBlock6" HorizontalAlignment="Center" Margin="0,0,0,0" Text="去除空格" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="282,0,0,0"  Text="翻 译" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="9,0,0,0" Text="合并换行" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                <TextBlock x:Name="textBlock2" HorizontalAlignment="Center" Margin="0,0,0,0" Text="去除空格" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
+                <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="282,0,0,0"  Text="翻 译" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" TextAlignment="Center" MouseUp="ShowInputWindow" Cursor="Hand" />
             </Grid>
         </Grid>
 
@@ -54,7 +56,7 @@
         
         <Line X1="0" Y1="10" X2="400" Y2="10" Stroke="#FF3A4FEE" StrokeThickness="2" Margin="0,134,0,0" VerticalAlignment="Top" Height="20" />
         <Line X1="0" Y1="10" X2="400" Y2="10" Stroke="#FF3A4FEE" StrokeThickness="2" Margin="0,240,0,0" VerticalAlignment="Top" Height="20" />
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Center" Margin="0,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Text="如果您觉得好用，欢迎捐助" TextAlignment="Center" FontWeight="Bold" />
+        <TextBlock x:Name="textBlock_pay" HorizontalAlignment="Center" Margin="0,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Text="如果您觉得好用，欢迎捐助" TextAlignment="Center" FontWeight="Bold" />
         <Image Source="/image/Wechat.png" Margin="55,0,0,8" Width="100" Height="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
         <Image Source="/image/AliPay.png" Margin="0,0,55,8" Width="102" Height="102" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
         <Label x:Name="label_wechat" Content="微 信 支 付" HorizontalAlignment="Left" Margin="71,0,0,103" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" />

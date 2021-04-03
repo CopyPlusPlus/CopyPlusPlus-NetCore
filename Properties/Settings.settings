@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CopyPlusPlus.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AppID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">关闭窗口自动保存</Value>
+    </Setting>
+    <Setting Name="SecretKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">关闭窗口自动保存</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

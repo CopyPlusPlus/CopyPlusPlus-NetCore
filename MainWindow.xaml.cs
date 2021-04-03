@@ -27,6 +27,9 @@ namespace CopyPlusPlus
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Is the translate API being changed or not
+        public static bool changeStatus = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,31 +50,48 @@ namespace CopyPlusPlus
 
                 for (int counter = 0; counter < text.Length - 1; counter++)
                 {
-                    //Console.WriteLine(text[counter]);
-                    //if (text[counter + 1].ToString() == "\r" && text[counter].ToString() != "。")
-                    //{
-                    //    text = text.Remove(counter + 1, 2);
-                    //}
-                    //if (text[counter + 1].ToString() == "\r" && text[counter].ToString() != ".")
-                    //{
-                    //    text = text.Remove(counter + 1, 2);
-                    //}
-
-                    if (text[counter + 1].ToString() == "\r")
+                    if (switch1.IsChecked == true)
                     {
-                        if (text[counter].ToString() == ".")
+                        if (text[counter + 1].ToString() == "\r")
                         {
-                            continue;
+                            if (text[counter].ToString() == ".")
+                            {
+                                continue;
+                            }
+                            if (text[counter].ToString() == "。")
+                            {
+                                continue;
+                            }
+                            text = text.Remove(counter + 1, 2);
                         }
-                        if (text[counter].ToString() == "。")
+                    }
+
+                    if (switch2.IsChecked == true)
+                    {
+                        if (text[counter].ToString() == " ")
                         {
-                            continue;
+                            text = text.Remove(counter, 1);
                         }
-                        text = text.Remove(counter + 1, 2);
                     }
                 }
 
-                //string text_after = text.Replace("\n","").Replace("\r","");
+                if (switch3.IsChecked == true)
+                {
+                    string appId = Properties.Settings.Default.AppID;
+                    string secretKey = Properties.Settings.Default.SecretKey;
+
+                    if (appId == "关闭窗口自动保存" || secretKey == "关闭窗口自动保存")
+                    {
+                        KeyInput keyinput = new KeyInput();
+                        keyinput.Show();
+                        changeStatus = true;
+                    }
+
+                    if (changeStatus == false)
+                    {
+                        text = BaiduTrans(appId, secretKey, text);
+                    }
+                }
 
                 Clipboard.SetText(text);
             }
@@ -84,7 +104,6 @@ namespace CopyPlusPlus
                 // Get the cut/copied image.
                 //Image img = (Image)e.Content;
             }
-
             // Is the content copied of file type?
             else if (e.ContentType == SharpClipboard.ContentTypes.Files)
             {
@@ -97,7 +116,6 @@ namespace CopyPlusPlus
                 //Debug.WriteLine(clipboard.ClipboardFile);
 
             }
-
             // If the cut/copied content is complex, use 'Other'.
             else if (e.ContentType == SharpClipboard.ContentTypes.Other)
             {
@@ -105,9 +123,6 @@ namespace CopyPlusPlus
 
                 // Do something with 'clipboard.ClipboardObject' or 'e.Content' here...
             }
-
-
-
         }
 
         private void Todolist_Checked(object sender, RoutedEventArgs e)
@@ -120,20 +135,22 @@ namespace CopyPlusPlus
             Process.Start("explorer.exe", "https://github.com/CopyPlusPlus/CopyPlusPlus");
         }
 
-        private void BaiduTrans(object sender, RoutedEventArgs e)
+        private string BaiduTrans(string appId, string secretKey, string q = "apple")
         {
-            // 原文
-            string q = "apple";
+            //q为原文
+
             // 源语言
             string from = "en";
             // 目标语言
             string to = "zh";
+
             // 改成您的APP ID
-            string appId = API.baidu_id;
+            //appId = NoAPI.baidu_id;
+            // 改成您的密钥
+            //secretKey = NoAPI.baidu_secretKey;
+
             Random rd = new Random();
             string salt = rd.Next(100000).ToString();
-            // 改成您的密钥
-            string secretKey = API.baidu_secretKey;
             string sign = EncryptString(appId + q + salt + secretKey);
             string url = "http://api.fanyi.baidu.com/api/trans/vip/translate?";
             url += "q=" + HttpUtility.UrlEncode(q);
@@ -156,10 +173,11 @@ namespace CopyPlusPlus
 
             //read json(retString) as a object
             var result = JsonSerializer.Deserialize<Rootobject>(retString);
-            
+
             Console.WriteLine(retString);
             Console.WriteLine(result.trans_result[0].dst);
 
+            return result.trans_result[0].dst;
         }
         // 计算MD5值
         public static string EncryptString(string str)
@@ -180,5 +198,25 @@ namespace CopyPlusPlus
             return sb.ToString();
         }
 
+        private void ShowInputWindowFirstly(object sender, RoutedEventArgs e)
+        {
+            string appId = Properties.Settings.Default.AppID;
+            string secretKey = Properties.Settings.Default.SecretKey;
+            if (appId == "关闭窗口自动保存" || secretKey == "关闭窗口自动保存")
+            {
+                KeyInput keyinput = new KeyInput();
+                keyinput.Show();
+                changeStatus = true;
+            }
+        }
+
+        private void ShowInputWindow(object sender, MouseButtonEventArgs e)
+        {
+            KeyInput keyinput = new KeyInput();
+            keyinput.textBox1.Text = Properties.Settings.Default.AppID;
+            keyinput.textBox2.Text = Properties.Settings.Default.SecretKey;
+            keyinput.Show();
+            changeStatus = true;
+        }
     }
 }
