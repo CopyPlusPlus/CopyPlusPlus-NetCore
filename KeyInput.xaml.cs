@@ -76,6 +76,7 @@ namespace CopyPlusPlus
                 //MainWindow mainWin = new MainWindow();
                 //mainWin.switch3.IsChecked = false;
             }
+            
             MainWindow.changeStatus = false;
         }
     }

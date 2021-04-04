@@ -17,20 +17,20 @@
                     Margin="0,0,0,0"
                     HorizontalAlignment="Center"
                     UncheckedBackground="#FF464141"
-                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" />
+                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" Checked="SwitchCheck" Unchecked="SwitchUncheck" />
                 <ToggleSwitch:HorizontalToggleSwitch x:Name="switch2"
                     IsChecked="False"
                     VerticalAlignment="Center"
                     Margin="50,0,0,0"
                     HorizontalAlignment="Center"
                     UncheckedBackground="#FF464141"
-                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" />
+                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" Checked="SwitchCheck" Unchecked="SwitchUncheck"  />
                 <ToggleSwitch:HorizontalToggleSwitch x:Name="switch3"
                     VerticalAlignment="Center"
                     Margin="50,0,0,0"
                     HorizontalAlignment="Center"
                     UncheckedBackground="#FF464141"
-                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" Checked="ShowInputWindowButton" />
+                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" Checked="ShowInputWindowButton" Unchecked="SwitchUncheck" />
             </WrapPanel>
             <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0" Width="340">
                 <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="9,0,0,0" Text="合并换行" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" TextAlignment="Center" />

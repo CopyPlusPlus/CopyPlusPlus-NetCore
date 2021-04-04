@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Web;
 using System.Windows;
 using System.Windows.Input;
+using ToggleSwitch;
 using WK.Libraries.SharpClipboardNS;
 
 namespace CopyPlusPlus
@@ -21,6 +22,9 @@ namespace CopyPlusPlus
 #pragma warning disable CA2211 // Non-constant fields should not be visible
         public static bool changeStatus = false;
 #pragma warning restore CA2211 // Non-constant fields should not be visible
+        bool switch1Check = true;
+        bool switch2Check = false;
+        bool switch3Check = false;
 
         public MainWindow()
         {
@@ -29,104 +33,89 @@ namespace CopyPlusPlus
             var clipboard = new SharpClipboard();
             // Attach your code to the ClipboardChanged event to listen to cuts/copies.
             clipboard.ClipboardChanged += ClipboardChanged;
+            //disable issueing ClipboardChanged event when start
+            clipboard.ObserveLastEntry = false;
+            clipboard.ObservableFormats.Files = false;
+            clipboard.ObservableFormats.Images = false;
         }
 
         private void ClipboardChanged(Object sender, SharpClipboard.ClipboardChangedEventArgs e)
         {
-            // Is the content copied of text type?
-            if (e.ContentType == SharpClipboard.ContentTypes.Text)
+            if (e.SourceApplication.Title.Contains("CopyPlusPlus"))
             {
-                // Get the cut/copied text.
-                string text = e.Content.ToString();
-
-                for (int counter = 0; counter < text.Length - 1; counter++)
+                return;
+            }
+            if (!e.SourceApplication.Title.Contains("CopyPlusPlus"))
+            {
+                // Is the content copied of text type?
+                if (e.ContentType == SharpClipboard.ContentTypes.Text)
                 {
-                    if (switch1.IsChecked == true)
+                    // Get the cut/copied text.
+                    string text = e.Content.ToString();
+
+                    if (switch1Check == true || switch2Check == true)
                     {
-                        if (text[counter + 1].ToString() == "\r")
+                        for (int counter = 0; counter < text.Length - 1; counter++)
                         {
-                            if (text[counter].ToString() == ".")
+                            if (switch1Check == true)
                             {
-                                continue;
+                                if (text[counter + 1].ToString() == "\r")
+                                {
+                                    if (text[counter].ToString() == ".")
+                                    {
+                                        continue;
+                                    }
+                                    if (text[counter].ToString() == "。")
+                                    {
+                                        continue;
+                                    }
+                                    text = text.Remove(counter + 1, 2);
+                                }
                             }
-                            if (text[counter].ToString() == "。")
+
+                            if (switch2Check == true)
                             {
-                                continue;
+                                if (text[counter].ToString() == " ")
+                                {
+                                    text = text.Remove(counter, 1);
+                                }
                             }
-                            text = text.Remove(counter + 1, 2);
                         }
                     }
 
-                    if (switch2.IsChecked == true)
+                    if (switch3Check == true)
                     {
-                        if (text[counter].ToString() == " ")
+                        if (changeStatus == false)
                         {
-                            text = text.Remove(counter, 1);
+                            string appId = Properties.Settings.Default.AppID;
+                            string secretKey = Properties.Settings.Default.SecretKey;
+                            if (appId == "none" || secretKey == "none")
+                            {
+                                MessageBox.Show("请先设置翻译接口");
+
+                                KeyInput keyinput = new KeyInput();
+                                keyinput.Show();
+                                changeStatus = true;
+                            }
+                            else
+                            {
+                                text = BaiduTrans(appId, secretKey, text);
+                            }
                         }
                     }
+                    Clipboard.SetText(text);
+                    Clipboard.Flush();
                 }
 
-                if (switch3.IsChecked == true)
+                // If the cut/copied content is complex, use 'Other'.
+                else if (e.ContentType == SharpClipboard.ContentTypes.Other)
                 {
-                    string appId = Properties.Settings.Default.AppID;
-                    string secretKey = Properties.Settings.Default.SecretKey;
+                    //do nothing
 
-                    if (changeStatus == false)
-                    {
-                        if (appId == "none" || secretKey == "none")
-                        {
-                            MessageBox.Show("请先设置翻译接口");
-
-                            KeyInput keyinput = new KeyInput();
-                            keyinput.Show();
-                            changeStatus = true;
-                        }
-                        else
-                        {
-                            text = BaiduTrans(appId, secretKey, text);
-                        }
-
-                    }
+                    // Do something with 'clipboard.ClipboardObject' or 'e.Content' here...
                 }
-                Clipboard.SetText(text);
-
-                try
-                {
-                    
-                }
-                finally
-                {
-
-                }
-
             }
 
-            // Is the content copied of image type?
-            else if (e.ContentType == SharpClipboard.ContentTypes.Image)
-            {
-                //do nothing
-
-                // Get the cut/copied image.
-                //Image img = (Image)e.Content;
-            }
-            // Is the content copied of file type?
-            else if (e.ContentType == SharpClipboard.ContentTypes.Files)
-            {
-                //do nothing
-
-                // Get the cut/copied file/files.
-                //Debug.WriteLine(clipboard.ClipboardFiles.ToArray());
-
-                // ...or use 'ClipboardFile' to get a single copied file.
-                //Debug.WriteLine(clipboard.ClipboardFile);
-            }
-            // If the cut/copied content is complex, use 'Other'.
-            else if (e.ContentType == SharpClipboard.ContentTypes.Other)
-            {
-                //do nothing
-
-                // Do something with 'clipboard.ClipboardObject' or 'e.Content' here...
-            }
         }
 
         private void Todolist_Checked(object sender, RoutedEventArgs e)
@@ -139,7 +128,7 @@ namespace CopyPlusPlus
             Process.Start("explorer.exe", "https://github.com/CopyPlusPlus/CopyPlusPlus");
         }
 
-        private string BaiduTrans(string appId, string secretKey, string q = "apple")
+        private static string BaiduTrans(string appId, string secretKey, string q = "apple")
         {
             //q为原文
 
@@ -212,6 +201,7 @@ namespace CopyPlusPlus
                 keyinput.Show();
                 changeStatus = true;
             }
+            switch3Check = true;
         }
 
         //点击"翻译"文字
@@ -220,6 +210,44 @@ namespace CopyPlusPlus
             KeyInput keyinput = new KeyInput();
             keyinput.Show();
             changeStatus = true;
+        }
+
+
+
+        private void SwitchUncheck(object sender, RoutedEventArgs e)
+        {
+            HorizontalToggleSwitch switchButton = sender as HorizontalToggleSwitch;
+            string switchName = switchButton.Name;
+            if (switchName == "switch1")
+            {
+                switch1Check = false;
+            }
+            if (switchName == "switch2")
+            {
+                switch2Check = false;
+            }
+            if (switchName == "switch3")
+            {
+                switch3Check = false;
+            }
+        }
+
+        private void SwitchCheck(object sender, RoutedEventArgs e)
+        {
+            HorizontalToggleSwitch switchButton = sender as HorizontalToggleSwitch;
+            string switchName = switchButton.Name;
+            if (switchName == "switch1")
+            {
+                switch1Check = true;
+            }
+            if (switchName == "switch2")
+            {
+                switch2Check = true;
+            }
+            if (switchName == "switch3")
+            {
+                switch3Check = true;
+            }
         }
     }
 }
