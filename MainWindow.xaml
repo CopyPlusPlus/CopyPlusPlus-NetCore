@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ToggleSwitch="clr-namespace:ToggleSwitch;assembly=ToggleSwitch"
         mc:Ignorable="d"
-        Title="Copy++ v2.0 本软件免费" Height="410" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="Copy++ v3.0 本软件免费" Height="410" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid Height="395" Width="400" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-        <TextBlock x:Name="text_abstract" HorizontalAlignment="Center" Margin="0,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="380" Padding="5,10,5,0" FontSize="14" LineHeight="24" FontStretch="Normal"><Run Text="本软件会自动合并段落，并且识别原有分段，只需将软件打开，然后直接复制粘贴即可。祝写作顺利！" /></TextBlock>
+        <TextBlock x:Name="text_abstract" HorizontalAlignment="Center" Margin="0,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="380" Padding="5,10,5,0" FontSize="14" LineHeight="24" FontStretch="Normal"><Run Text="复制文本后，软件可以自动处理，只需打开相应功能，然后直接粘贴即可。祝写作顺利，走向人生巅峰！" /></TextBlock>
 
         <Grid Margin="0,73,0,259">
             <WrapPanel Margin="0,30,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
