@@ -8,7 +8,7 @@
         Title="百度翻译接口" Height="138" Width="253" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closed="WriteKey">
     <Grid VerticalAlignment="Bottom" Height="118" Margin="0,5,0,0">
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="83,31,0,0" Text="点击这里输入" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" GotFocus="ClearText"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Margin="83,58,0,0" Text="关闭窗口自动保存" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" GotFocus="ClearText" TextChanged="textBox2_TextChanged"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Margin="83,58,0,0" Text="关闭窗口自动保存" TextWrapping="Wrap" VerticalAlignment="Top" Width="148" GotFocus="ClearText"/>
         <Label x:Name="label1" Content="AppID:" HorizontalAlignment="Left" Margin="19,27,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label x:Name="label2" Content="Key:" HorizontalAlignment="Left" Margin="27,54,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="zh-cn" Text="不知道怎么操作? 关注公众号获取教程"/></TextBlock>
