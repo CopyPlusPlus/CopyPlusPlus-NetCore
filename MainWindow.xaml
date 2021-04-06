@@ -42,7 +42,7 @@
         <TextBlock x:Name="textBlock_contact" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Left" Margin="20,154,0,0" Width="188"><Run Text="遇到问题，或提建议，欢迎联系我" /></TextBlock>
         <TextBlock x:Name="textBlock_mail" HorizontalAlignment="Left" Margin="20,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center"><Run Text="copyplusplus@163.com" /></TextBlock>
         <TextBlock x:Name="textBlock_github" HorizontalAlignment="Left" Margin="20,0,0,167" TextWrapping="Wrap" VerticalAlignment="Bottom" TextAlignment="Center"><Run Text="项目已开源，欢迎Star" /></TextBlock>
-        <Button Margin="145,0,236,165" Click="Github_Click" Cursor="Hand" VerticalAlignment="Bottom">
+        <Button Margin="143,0,238,167" Click="Github_Click" Cursor="Hand" VerticalAlignment="Bottom">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/image/GitHub.png" />

@@ -5,7 +5,6 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
-using System.Threading;
 using System.Web;
 using System.Windows;
 using System.Windows.Input;
@@ -23,114 +22,105 @@ namespace CopyPlusPlus
 #pragma warning disable CA2211 // Non-constant fields should not be visible
         public static bool changeStatus = false;
 #pragma warning restore CA2211 // Non-constant fields should not be visible
-        bool switch1Check = true;
-        bool switch2Check = false;
-        bool switch3Check = false;
+        private bool switch1Check = true;
+        private bool switch2Check = false;
+        private bool switch3Check = false;
 
-        public SharpClipboard clipboard = new SharpClipboard();
+        public SharpClipboard clipboard;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            
-            // Attach your code to the ClipboardChanged event to listen to cuts/copies.
-            clipboard.ClipboardChanged += ClipboardChanged;
-            //disable issueing ClipboardChanged event when start
-            clipboard.ObserveLastEntry = false;
-            clipboard.ObservableFormats.Files = false;
-            clipboard.ObservableFormats.Images = false;
+            InitializeClipboardMonitor();
         }
 
-        public void InitializeClipboard()
+
+        //Initializes a new instance of SharpClipboard
+        public void InitializeClipboardMonitor()
         {
             clipboard = new SharpClipboard();
+            //Attach your code to the ClipboardChanged event to listen to cuts/copies
             clipboard.ClipboardChanged += ClipboardChanged;
             //disable issueing ClipboardChanged event when start
             clipboard.ObserveLastEntry = false;
+            //disable monitoring files     
             clipboard.ObservableFormats.Files = false;
+            //disable monitoring images
             clipboard.ObservableFormats.Images = false;
         }
 
         private void ClipboardChanged(Object sender, SharpClipboard.ClipboardChangedEventArgs e)
         {
-            //if (e.SourceApplication.Title.Contains("CopyPlusPlus"))
-            //{
-            //    return;
-            //}
-            if (true)
+            // Is the content copied of text type?
+            if (e.ContentType == SharpClipboard.ContentTypes.Text)
             {
-                // Is the content copied of text type?
-                if (e.ContentType == SharpClipboard.ContentTypes.Text)
+                // Get the cut/copied text.
+                string text = e.Content.ToString();
+
+                if (switch1Check == true || switch2Check == true)
                 {
-                    // Get the cut/copied text.
-                    string text = e.Content.ToString();
-
-                    if (switch1Check == true || switch2Check == true)
+                    for (int counter = 0; counter < text.Length - 1; counter++)
                     {
-                        for (int counter = 0; counter < text.Length - 1; counter++)
+                        if (switch1Check == true)
                         {
-                            if (switch1Check == true)
+                            if (text[counter + 1].ToString() == "\r")
                             {
-                                if (text[counter + 1].ToString() == "\r")
+                                if (text[counter].ToString() == ".")
                                 {
-                                    if (text[counter].ToString() == ".")
-                                    {
-                                        continue;
-                                    }
-                                    if (text[counter].ToString() == "。")
-                                    {
-                                        continue;
-                                    }
-                                    text = text.Remove(counter + 1, 2);
+                                    continue;
                                 }
+                                if (text[counter].ToString() == "。")
+                                {
+                                    continue;
+                                }
+                                text = text.Remove(counter + 1, 2);
                             }
+                        }
 
-                            if (switch2Check == true)
+                        if (switch2Check == true)
+                        {
+                            if (text[counter].ToString() == " ")
                             {
-                                if (text[counter].ToString() == " ")
-                                {
-                                    text = text.Remove(counter, 1);
-                                }
+                                text = text.Remove(counter, 1);
                             }
                         }
                     }
+                }
 
-                    if (switch3Check == true)
+                if (switch3Check == true)
+                {
+                    if (changeStatus == false)
                     {
-                        if (changeStatus == false)
+                        string appId = Properties.Settings.Default.AppID;
+                        string secretKey = Properties.Settings.Default.SecretKey;
+                        if (appId == "none" || secretKey == "none")
                         {
-                            string appId = Properties.Settings.Default.AppID;
-                            string secretKey = Properties.Settings.Default.SecretKey;
-                            if (appId == "none" || secretKey == "none")
-                            {
-                                MessageBox.Show("请先设置翻译接口");
+                            MessageBox.Show("请先设置翻译接口");
 
-                                KeyInput keyinput = new KeyInput();
-                                keyinput.Show();
-                                changeStatus = true;
-                            }
-                            else
-                            {
-                                text = BaiduTrans(appId, secretKey, text);
-                            }
+                            KeyInput keyinput = new KeyInput();
+                            keyinput.Show();
+                            changeStatus = true;
+                        }
+                        else
+                        {
+                            text = BaiduTrans(appId, secretKey, text);
                         }
                     }
-
-                    clipboard.StopMonitoring();
-                    Clipboard.SetText(text);
-                    //Clipboard.Flush();
-                    InitializeClipboard();
-                    
-
                 }
 
-                // If the cut/copied content is complex, use 'Other'.
-                else if (e.ContentType == SharpClipboard.ContentTypes.Other)
-                {
-                    //do nothing
+                clipboard.StopMonitoring();
+                Clipboard.SetText(text);
+                Clipboard.Flush();
+                InitializeClipboardMonitor();
+            }
 
-                    // Do something with 'clipboard.ClipboardObject' or 'e.Content' here...
-                }
+            // If the cut/copied content is complex, use 'Other'.
+            else if (e.ContentType == SharpClipboard.ContentTypes.Other)
+            {
+                //do nothing
+
+                // Do something with 'clipboard.ClipboardObject' or 'e.Content' here...
             }
 
         }
@@ -228,8 +218,6 @@ namespace CopyPlusPlus
             keyinput.Show();
             changeStatus = true;
         }
-
-
 
         private void SwitchUncheck(object sender, RoutedEventArgs e)
         {

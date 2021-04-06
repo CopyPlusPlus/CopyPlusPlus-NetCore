@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>copy.ico</ApplicationIcon>
   </PropertyGroup>
@@ -10,7 +10,6 @@
   <ItemGroup>
     <None Remove="image\AliPay.png" />
     <None Remove="image\GitHub.png" />
-    <None Remove="image\wechat-gzh.jpg" />
     <None Remove="image\Wechat.png" />
     <None Remove="image\wechatgzh.jpg" />
   </ItemGroup>
@@ -31,7 +30,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="image\wechatgzh.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
