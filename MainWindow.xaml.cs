@@ -203,7 +203,7 @@ namespace CopyPlusPlus
             string secretKey = Properties.Settings.Default.SecretKey;
             if (appId == "none" || secretKey == "none")
             {
-                MessageBox.Show("请先设置翻译接口");
+                MessageBox.Show("请先设置翻译接口", "Copy++");
                 KeyInput keyinput = new KeyInput();
                 keyinput.Show();
                 changeStatus = true;
