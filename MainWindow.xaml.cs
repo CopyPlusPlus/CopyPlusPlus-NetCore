@@ -5,6 +5,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Web;
 using System.Windows;
 using System.Windows.Input;
@@ -26,12 +27,23 @@ namespace CopyPlusPlus
         bool switch2Check = false;
         bool switch3Check = false;
 
+        public SharpClipboard clipboard = new SharpClipboard();
         public MainWindow()
         {
             InitializeComponent();
 
-            var clipboard = new SharpClipboard();
+            
             // Attach your code to the ClipboardChanged event to listen to cuts/copies.
+            clipboard.ClipboardChanged += ClipboardChanged;
+            //disable issueing ClipboardChanged event when start
+            clipboard.ObserveLastEntry = false;
+            clipboard.ObservableFormats.Files = false;
+            clipboard.ObservableFormats.Images = false;
+        }
+
+        public void InitializeClipboard()
+        {
+            clipboard = new SharpClipboard();
             clipboard.ClipboardChanged += ClipboardChanged;
             //disable issueing ClipboardChanged event when start
             clipboard.ObserveLastEntry = false;
@@ -41,11 +53,11 @@ namespace CopyPlusPlus
 
         private void ClipboardChanged(Object sender, SharpClipboard.ClipboardChangedEventArgs e)
         {
-            if (e.SourceApplication.Title.Contains("CopyPlusPlus"))
-            {
-                return;
-            }
-            if (!e.SourceApplication.Title.Contains("CopyPlusPlus"))
+            //if (e.SourceApplication.Title.Contains("CopyPlusPlus"))
+            //{
+            //    return;
+            //}
+            if (true)
             {
                 // Is the content copied of text type?
                 if (e.ContentType == SharpClipboard.ContentTypes.Text)
@@ -103,8 +115,13 @@ namespace CopyPlusPlus
                             }
                         }
                     }
+
+                    clipboard.StopMonitoring();
                     Clipboard.SetText(text);
-                    Clipboard.Flush();
+                    //Clipboard.Flush();
+                    InitializeClipboard();
+                    
+
                 }
 
                 // If the cut/copied content is complex, use 'Other'.
