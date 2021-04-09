@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="Copy++ v3.0 本软件免费" Height="410" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid Height="395" Width="400" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-        <TextBlock x:Name="text_abstract" HorizontalAlignment="Center" Margin="0,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="380" Padding="5,10,5,0" FontSize="14" LineHeight="24" FontStretch="Normal"><Run Text="复制文本后，软件可以自动处理，只需打开相应功能，然后直接粘贴即可。祝写作顺利，走向人生巅峰！" /></TextBlock>
+        <TextBlock x:Name="text_abstract" HorizontalAlignment="Center" Margin="0,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="380" Padding="5,10,5,0" FontSize="14" LineHeight="24" FontStretch="Normal"><Run Text="复制文本后，软件会自动处理。只需打开相应功能，然后直接粘贴即可。祝写作顺利，走向人生巅峰！" /></TextBlock>
 
         <Grid Margin="0,73,0,259">
-            <WrapPanel Margin="0,30,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <WrapPanel Margin="0,30,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="380">
                 <ToggleSwitch:HorizontalToggleSwitch x:Name="switch1"
                     IsChecked="True"
                     VerticalAlignment="Center"
@@ -21,21 +21,28 @@
                 <ToggleSwitch:HorizontalToggleSwitch x:Name="switch2"
                     IsChecked="False"
                     VerticalAlignment="Center"
-                    Margin="50,0,0,0"
+                    Margin="20,0,0,0"
                     HorizontalAlignment="Center"
                     UncheckedBackground="#FF464141"
                     CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" Checked="SwitchCheck" Unchecked="SwitchUncheck"  />
                 <ToggleSwitch:HorizontalToggleSwitch x:Name="switch3"
                     VerticalAlignment="Center"
-                    Margin="50,0,0,0"
+                    Margin="20,0,0,0"
                     HorizontalAlignment="Center"
                     UncheckedBackground="#FF464141"
                     CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" Checked="ShowInputWindowButton" Unchecked="SwitchUncheck" />
+                <ToggleSwitch:HorizontalToggleSwitch x:Name="switch4"
+                    VerticalAlignment="Center"
+                    Margin="20,0,0,0"
+                    HorizontalAlignment="Center"
+                    UncheckedBackground="#FF464141"
+                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" Checked="SwitchCheck" Unchecked="SwitchUncheck" />
             </WrapPanel>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,4,0,0" Width="340">
-                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="9,0,0,0" Text="合并换行" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                <TextBlock x:Name="textBlock2" HorizontalAlignment="Center" Margin="0,0,0,0" Text="去除空格" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" TextAlignment="Center" />
-                <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="282,0,0,0"  Text="翻 译" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" TextAlignment="Center" MouseUp="ShowInputWindowText" Cursor="Hand" />
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,2,0,0" Width="380">
+                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Text="合并换行" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" TextAlignment="Center" Margin="10,0,0,0" />
+                <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Text="去除空格" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" TextAlignment="Center" Margin="108,0,0,0" />
+                <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="220,0,0,0"  Text="翻  译" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" TextAlignment="Center" MouseUp="ShowInputWindowText" Cursor="Hand" />
+                <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="319,0,0,0"  Text="翻译结果弹窗显示" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="10" FontWeight="Bold" TextAlignment="Center" Cursor="Hand" Width="43" />
             </Grid>
         </Grid>
 

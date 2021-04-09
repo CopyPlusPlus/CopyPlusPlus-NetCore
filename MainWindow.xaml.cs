@@ -25,6 +25,7 @@ namespace CopyPlusPlus
         private bool switch1Check = true;
         private bool switch2Check = false;
         private bool switch3Check = false;
+        private bool switch4Check = false;
 
         public SharpClipboard clipboard;
 
@@ -105,6 +106,14 @@ namespace CopyPlusPlus
                         else
                         {
                             text = BaiduTrans(appId, secretKey, text);
+
+                            if (switch4Check == true)
+                            {
+                                MessageBox.Show(text);
+                                TranslateResult translateResult = new TranslateResult();
+                                translateResult.textBox.Text = text;
+                                translateResult.Show();
+                            }
                         }
                     }
                 }
@@ -235,6 +244,10 @@ namespace CopyPlusPlus
             {
                 switch3Check = false;
             }
+            if (switchName == "switch4")
+            {
+                switch4Check = false;
+            }
         }
 
         private void SwitchCheck(object sender, RoutedEventArgs e)
@@ -252,6 +265,10 @@ namespace CopyPlusPlus
             if (switchName == "switch3")
             {
                 switch3Check = true;
+            }
+            if (switchName == "switch4")
+            {
+                switch4Check = true;
             }
         }
     }
