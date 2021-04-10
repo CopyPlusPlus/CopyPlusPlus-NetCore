@@ -120,9 +120,7 @@ namespace CopyPlusPlus
                         {
                             MessageBox.Show("请先设置翻译接口");
 
-                            KeyInput keyinput = new KeyInput();
-                            keyinput.Show();
-                            changeStatus = true;
+                            Show_InputAPIWindow();
                         }
                         else
                         {
@@ -146,6 +144,7 @@ namespace CopyPlusPlus
                     }
                 }
 
+                //Prevent loop
                 clipboard.StopMonitoring();
                 Clipboard.SetText(text);
                 Clipboard.Flush();
@@ -234,22 +233,25 @@ namespace CopyPlusPlus
         }
 
         //打开翻译按钮
-        private void ShowInputWindowButton(object sender, RoutedEventArgs e)
+        private void TranslateSwitch_Check(object sender, RoutedEventArgs e)
         {
             string appId = Properties.Settings.Default.AppID;
             string secretKey = Properties.Settings.Default.SecretKey;
             if (appId == "none" || secretKey == "none")
             {
                 MessageBox.Show("请先设置翻译接口", "Copy++");
-                KeyInput keyinput = new KeyInput();
-                keyinput.Show();
-                changeStatus = true;
+                Show_InputAPIWindow();
             }
             switch3Check = true;
         }
 
         //点击"翻译"文字
-        private void ShowInputWindowText(object sender, MouseButtonEventArgs e)
+        private void TranslateText_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            Show_InputAPIWindow();
+        }
+
+        private void Show_InputAPIWindow()
         {
             KeyInput keyinput = new KeyInput();
             keyinput.Show();
@@ -298,6 +300,12 @@ namespace CopyPlusPlus
             {
                 switch4Check = true;
             }
+        }
+
+        public static void Switch3Uncheck()
+        {
+
+            //switch3.IsChecked = false;
         }
 
         private void ChangeSwitch()

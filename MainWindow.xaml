@@ -30,7 +30,7 @@
                     Margin="20,0,0,0"
                     HorizontalAlignment="Center"
                     UncheckedBackground="#FF464141"
-                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" Checked="ShowInputWindowButton" Unchecked="SwitchUncheck" />
+                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" Checked="TranslateSwitch_Check" Unchecked="SwitchUncheck" />
                 <ToggleSwitch:HorizontalToggleSwitch x:Name="switch4"
                     VerticalAlignment="Center"
                     Margin="20,0,0,0"
@@ -41,7 +41,7 @@
             <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,2,0,0" Width="380">
                 <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Text="合并换行" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" TextAlignment="Center" Margin="10,0,0,0" />
                 <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Text="去除空格" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" TextAlignment="Center" Margin="108,0,0,0" />
-                <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="220,0,0,0"  Text="翻  译" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" TextAlignment="Center" MouseUp="ShowInputWindowText" Cursor="Hand" />
+                <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="220,0,0,0"  Text="翻  译" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" TextAlignment="Center" MouseUp="TranslateText_Clicked" Cursor="Hand" />
                 <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="319,0,0,0"  Text="翻译结果弹窗显示" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="10" FontWeight="Bold" TextAlignment="Center" Cursor="Hand" Width="43" />
             </Grid>
         </Grid>
