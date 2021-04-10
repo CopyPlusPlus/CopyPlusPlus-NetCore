@@ -74,6 +74,7 @@ namespace CopyPlusPlus
             if (Properties.Settings.Default.AppID == "none" || Properties.Settings.Default.SecretKey == "none")
             {
                 //MainWindow.Switch3Uncheck();
+                //this.Owner.switch3.Ischecked = false;
             }
 
             MainWindow.changeStatus = false;

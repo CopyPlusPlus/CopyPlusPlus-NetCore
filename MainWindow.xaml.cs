@@ -253,7 +253,10 @@ namespace CopyPlusPlus
 
         private void Show_InputAPIWindow()
         {
-            KeyInput keyinput = new KeyInput();
+            KeyInput keyinput = new KeyInput
+            {
+                Owner = GetWindow(this)
+            };
             keyinput.Show();
             changeStatus = true;
         }
