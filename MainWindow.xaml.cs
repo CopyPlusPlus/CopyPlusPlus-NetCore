@@ -57,7 +57,6 @@ namespace CopyPlusPlus
             }
         }
 
-
         //Initializes a new instance of SharpClipboard
         public void InitializeClipboardMonitor()
         {
@@ -66,7 +65,7 @@ namespace CopyPlusPlus
             clipboard.ClipboardChanged += ClipboardChanged;
             //disable issueing ClipboardChanged event when start
             clipboard.ObserveLastEntry = false;
-            //disable monitoring files     
+            //disable monitoring files
             clipboard.ObservableFormats.Files = false;
             //disable monitoring images
             clipboard.ObservableFormats.Images = false;
@@ -118,7 +117,7 @@ namespace CopyPlusPlus
                         string secretKey = Properties.Settings.Default.SecretKey;
                         if (appId == "none" || secretKey == "none")
                         {
-                            MessageBox.Show("请先设置翻译接口");
+                            //MessageBox.Show("请先设置翻译接口");
 
                             Show_InputAPIWindow();
                         }
@@ -158,7 +157,6 @@ namespace CopyPlusPlus
 
                 // Do something with 'clipboard.ClipboardObject' or 'e.Content' here...
             }
-
         }
 
         private void Todolist_Checked(object sender, RoutedEventArgs e)
@@ -239,7 +237,7 @@ namespace CopyPlusPlus
             string secretKey = Properties.Settings.Default.SecretKey;
             if (appId == "none" || secretKey == "none")
             {
-                MessageBox.Show("请先设置翻译接口", "Copy++");
+                //MessageBox.Show("请先设置翻译接口", "Copy++");
                 Show_InputAPIWindow();
             }
             switch3Check = true;
@@ -257,6 +255,7 @@ namespace CopyPlusPlus
             {
                 Owner = GetWindow(this)
             };
+            MessageBox.Show(keyinput, "请先设置翻译接口", "Copy++");
             keyinput.Show();
             changeStatus = true;
         }
@@ -307,7 +306,6 @@ namespace CopyPlusPlus
 
         public static void Switch3Uncheck()
         {
-
             //switch3.IsChecked = false;
         }
 

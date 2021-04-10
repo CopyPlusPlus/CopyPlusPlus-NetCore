@@ -24,7 +24,7 @@
                     Margin="20,0,0,0"
                     HorizontalAlignment="Center"
                     UncheckedBackground="#FF464141"
-                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" Checked="SwitchCheck" Unchecked="SwitchUncheck"  />
+                    CheckedBackground="#FF5573F7" Cursor="Hand" Width="80" Checked="SwitchCheck" Unchecked="SwitchUncheck" />
                 <ToggleSwitch:HorizontalToggleSwitch x:Name="switch3"
                     VerticalAlignment="Center"
                     Margin="20,0,0,0"
@@ -42,7 +42,7 @@
                 <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Text="合并换行" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" TextAlignment="Center" Margin="10,0,0,0" />
                 <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Text="去除空格" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" TextAlignment="Center" Margin="108,0,0,0" />
                 <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="220,0,0,0"  Text="翻  译" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" TextAlignment="Center" MouseUp="TranslateText_Clicked" Cursor="Hand" />
-                <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="319,0,0,0"  Text="翻译结果弹窗显示" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="10" FontWeight="Bold" TextAlignment="Center" Cursor="Hand" Width="43" />
+                <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="315,0,0,0"  Text="翻 译 结 果弹 窗 显 示" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="10" FontWeight="Bold" TextAlignment="Center" Width="51" />
             </Grid>
         </Grid>
 
@@ -59,7 +59,6 @@
 
         <Image Source="/image/wechatgzh.jpg" Margin="265,145,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="70" Width="70" />
         <TextBlock x:Name="textBlock_gzh" HorizontalAlignment="Left" Margin="249,0,0,156" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="10" TextAlignment="Center" Width="102"><Run Text="欢迎关注我的公众号" /><LineBreak /><Run Language="zh-cn" Text="后续更新将会在此发布" /></TextBlock>
-
 
         <Line X1="0" Y1="10" X2="400" Y2="10" Stroke="#FF3A4FEE" StrokeThickness="2" Margin="0,129,0,0" VerticalAlignment="Top" Height="20" />
         <Line X1="0" Y1="10" X2="400" Y2="10" Stroke="#FF3A4FEE" StrokeThickness="2" Margin="0,236,0,0" VerticalAlignment="Top" Height="20" />
