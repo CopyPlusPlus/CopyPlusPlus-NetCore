@@ -46,5 +46,53 @@ namespace CopyPlusPlus.Properties {
                 this["SecretKey"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Switch1Check {
+            get {
+                return ((bool)(this["Switch1Check"]));
+            }
+            set {
+                this["Switch1Check"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Switch2Check {
+            get {
+                return ((bool)(this["Switch2Check"]));
+            }
+            set {
+                this["Switch2Check"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Switch3Check {
+            get {
+                return ((bool)(this["Switch3Check"]));
+            }
+            set {
+                this["Switch3Check"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Switch4Check {
+            get {
+                return ((bool)(this["Switch4Check"]));
+            }
+            set {
+                this["Switch4Check"] = value;
+            }
+        }
     }
 }

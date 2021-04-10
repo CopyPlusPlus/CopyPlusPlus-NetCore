@@ -73,10 +73,10 @@ namespace CopyPlusPlus
 
             if (Properties.Settings.Default.AppID == "none" || Properties.Settings.Default.SecretKey == "none")
             {
-                //MainWindow mainWin = new MainWindow();
-                //mainWin.switch3.IsChecked = false;
+                MainWindow mainWin = new MainWindow();
+                mainWin.switch3.IsChecked = false;
             }
-            
+
             MainWindow.changeStatus = false;
         }
     }

@@ -22,10 +22,10 @@ namespace CopyPlusPlus
 #pragma warning disable CA2211 // Non-constant fields should not be visible
         public static bool changeStatus = false;
 #pragma warning restore CA2211 // Non-constant fields should not be visible
-        private bool switch1Check = true;
-        private bool switch2Check = false;
-        private bool switch3Check = false;
-        private bool switch4Check = false;
+        private bool switch1Check;
+        private bool switch2Check;
+        private bool switch3Check;
+        private bool switch4Check;
 
         public SharpClipboard clipboard;
 
@@ -34,6 +34,27 @@ namespace CopyPlusPlus
             InitializeComponent();
 
             InitializeClipboardMonitor();
+
+            switch1Check = Properties.Settings.Default.Switch1Check;
+            switch2Check = Properties.Settings.Default.Switch2Check;
+            switch3Check = Properties.Settings.Default.Switch3Check;
+            switch4Check = Properties.Settings.Default.Switch4Check;
+            if (switch1Check == true)
+            {
+                switch1.IsChecked = true;
+            }
+            if (switch2Check == true)
+            {
+                switch2.IsChecked = true;
+            }
+            if (switch3Check == true)
+            {
+                switch3.IsChecked = true;
+            }
+            if (switch4Check == true)
+            {
+                switch4.IsChecked = true;
+            }
         }
 
 
@@ -109,10 +130,17 @@ namespace CopyPlusPlus
 
                             if (switch4Check == true)
                             {
-                                MessageBox.Show(text);
+                                //MessageBox.Show(text);
                                 TranslateResult translateResult = new TranslateResult();
                                 translateResult.textBox.Text = text;
+
+                                //translateResult.WindowStartupLocation = WindowStartupLocation.Manual;
+                                //translateResult.Left = System.Windows.Forms.Control.MousePosition.X;
+                                //translateResult.Top = System.Windows.Forms.Control.MousePosition.Y;
                                 translateResult.Show();
+
+                                //var left = translateResult.Left;
+                                //var top = translateResult.Top;
                             }
                         }
                     }
@@ -270,6 +298,23 @@ namespace CopyPlusPlus
             {
                 switch4Check = true;
             }
+        }
+
+        private void ChangeSwitch()
+        {
+            if (switch1Check == true)
+            {
+                switch1.IsChecked = true;
+            }
+        }
+
+        private void MainWindow_Closed(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Switch1Check = switch1Check;
+            Properties.Settings.Default.Switch2Check = switch2Check;
+            Properties.Settings.Default.Switch3Check = switch3Check;
+            Properties.Settings.Default.Switch4Check = switch4Check;
+            Properties.Settings.Default.Save();
         }
     }
 }
