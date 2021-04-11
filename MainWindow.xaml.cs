@@ -117,8 +117,7 @@ namespace CopyPlusPlus
                         string secretKey = Properties.Settings.Default.SecretKey;
                         if (appId == "none" || secretKey == "none")
                         {
-                            //MessageBox.Show("请先设置翻译接口");
-
+                            //MessageBox.Show("请先设置翻译接口", "Copy++");
                             Show_InputAPIWindow();
                         }
                         else
@@ -246,17 +245,22 @@ namespace CopyPlusPlus
         //点击"翻译"文字
         private void TranslateText_Clicked(object sender, MouseButtonEventArgs e)
         {
-            Show_InputAPIWindow();
+            Show_InputAPIWindow(false);
         }
 
-        private void Show_InputAPIWindow()
+        private void Show_InputAPIWindow(bool showMessage = true)
         {
             KeyInput keyinput = new KeyInput
             {
                 Owner = this
             };
-            MessageBox.Show(keyinput, "请先设置翻译接口", "Copy++");
+
             keyinput.Show();
+
+            if (showMessage == true)
+            {
+                MessageBox.Show(keyinput, "请先设置翻译接口", "Copy++");
+            }
             changeStatus = true;
         }
 
@@ -324,7 +328,7 @@ namespace CopyPlusPlus
             Properties.Settings.Default.Switch2Check = switch2Check;
             Properties.Settings.Default.Switch3Check = switch3Check;
             Properties.Settings.Default.Switch4Check = switch4Check;
-            
+
             //判断Swith3状态,避免bug
             if (Properties.Settings.Default.AppID == "none" || Properties.Settings.Default.SecretKey == "none")
             {
