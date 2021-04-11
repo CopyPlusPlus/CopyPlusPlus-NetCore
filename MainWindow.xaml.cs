@@ -253,7 +253,7 @@ namespace CopyPlusPlus
         {
             KeyInput keyinput = new KeyInput
             {
-                Owner = GetWindow(this)
+                Owner = this
             };
             MessageBox.Show(keyinput, "请先设置翻译接口", "Copy++");
             keyinput.Show();
@@ -319,10 +319,18 @@ namespace CopyPlusPlus
 
         private void MainWindow_Closed(object sender, EventArgs e)
         {
+            //记录每个Switch的状态,以便下次打开恢复
             Properties.Settings.Default.Switch1Check = switch1Check;
             Properties.Settings.Default.Switch2Check = switch2Check;
             Properties.Settings.Default.Switch3Check = switch3Check;
             Properties.Settings.Default.Switch4Check = switch4Check;
+            
+            //判断Swith3状态,避免bug
+            if (Properties.Settings.Default.AppID == "none" || Properties.Settings.Default.SecretKey == "none")
+            {
+                Properties.Settings.Default.Switch3Check = false;
+            }
+
             Properties.Settings.Default.Save();
         }
     }

@@ -7,7 +7,8 @@
     <ApplicationIcon>copy.ico</ApplicationIcon>
     <AssemblyName>Copy++</AssemblyName>
     <Authors>wy</Authors>
-    <Company>wykj</Company>
+    <Company>Copy++</Company>
+    <Description />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
