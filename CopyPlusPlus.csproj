@@ -6,6 +6,18 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>copy.ico</ApplicationIcon>
     <AssemblyName>Copy++</AssemblyName>
+    <Authors>wy</Authors>
+    <Company>wykj</Company>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>
